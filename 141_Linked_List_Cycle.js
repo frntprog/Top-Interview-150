@@ -54,15 +54,32 @@ var hasCycle = function (head) {
   values.push(current.value);
   while (current.next) {
     current = current.next;
-    let match = values.find((el) => el == current.value);
+    let match = values.find((el) => el === current);
     if (match) {
-      console.log(match);
       return match ? true : 0;
     }
-    current.value ? values.push(current.value) : 0;
+    current ? values.push(current) : 0;
   }
   return false;
 };
+
+// *** Floyd's Cycle Finding Algorithm ***
+
+// function hasCycle(head) {
+//   let slow = head;
+//   let fast = head;
+
+//   while (fast !== null && fast.next !== null) {
+//     slow = slow.next;
+//     fast = fast.next.next;
+
+//     if (slow === fast) {
+//       return true; // Loop detected
+//     }
+//   }
+
+//   return false; // No loop found
+// }
 
 const head = initializeLinkedListFromArray([
   -21, 10, 17, 8, 4, 26, 5, 35, 33, -7, -16, 27, -12, 6, 29, -12, 5, 9, 20, 14,
